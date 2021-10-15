@@ -6,23 +6,28 @@ public class item {
 	private double Price;
 	private String type;
 
+	public int getItemID() {
+		return this.itemID;
+	}
+
+	/**
+	 * 
+	 * @param itemID
+	 */
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
+	}
+
 	public String getName() {
 		return this.name;
 	}
 
-	public void setName() {
-		// TODO - implement item.setName
-		throw new UnsupportedOperationException();
-	}
-
-	public int getID() {
-		// TODO - implement item.getID
-		throw new UnsupportedOperationException();
-	}
-
-	public void setID() {
-		// TODO - implement item.setID
-		throw new UnsupportedOperationException();
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {
@@ -30,7 +35,11 @@ public class item {
 		throw new UnsupportedOperationException();
 	}
 
-	public void setDescription() {
+	/**
+	 * 
+	 * @param Description
+	 */
+	public void setDescription(String Description) {
 		// TODO - implement item.setDescription
 		throw new UnsupportedOperationException();
 	}
@@ -40,14 +49,25 @@ public class item {
 		throw new UnsupportedOperationException();
 	}
 
-	public double setPrice() {
+	/**
+	 * 
+	 * @param Price
+	 */
+	public void setPrice(double Price) {
 		// TODO - implement item.setPrice
 		throw new UnsupportedOperationException();
 	}
 
-	public void showType() {
-		// TODO - implement item.showType
-		throw new UnsupportedOperationException();
+	public String getType() {
+		return this.type;
+	}
+
+	/**
+	 * 
+	 * @param type
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

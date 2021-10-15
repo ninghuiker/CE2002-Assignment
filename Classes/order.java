@@ -45,4 +45,40 @@ public class order {
 		throw new UnsupportedOperationException();
 	}
 
+	public boolean getIsMember() {
+		return this.isMember;
+	}
+
+	/**
+	 * 
+	 * @param isMember
+	 */
+	public void setIsMember(boolean isMember) {
+		this.isMember = isMember;
+	}
+
+	public datetime getTime() {
+		return this.time;
+	}
+
+	/**
+	 * 
+	 * @param time
+	 */
+	public void setTime(datetime time) {
+		this.time = time;
+	}
+
+	public datetime getDate() {
+		return this.date;
+	}
+
+	/**
+	 * 
+	 * @param date
+	 */
+	public void setDate(datetime date) {
+		this.date = date;
+	}
+
 }

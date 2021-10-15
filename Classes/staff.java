@@ -3,32 +3,28 @@ public class staff extends person {
 	private int employeeId;
 	private string jobTitle;
 
-	public int getStaffId() {
-		// TODO - implement staff.getStaffId
-		throw new UnsupportedOperationException();
+	public int getEmployeeId() {
+		return this.employeeId;
 	}
 
 	/**
 	 * 
-	 * @param Id
+	 * @param employeeId
 	 */
-	public void setStaffId(int Id) {
-		// TODO - implement staff.setStaffId
-		throw new UnsupportedOperationException();
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
-	public String getJobTitle() {
-		// TODO - implement staff.getJobTitle
-		throw new UnsupportedOperationException();
+	public string getJobTitle() {
+		return this.jobTitle;
 	}
 
 	/**
 	 * 
-	 * @param string
+	 * @param jobTitle
 	 */
-	public void setJobTitle(title string) {
-		// TODO - implement staff.setJobTitle
-		throw new UnsupportedOperationException();
+	public void setJobTitle(string jobTitle) {
+		this.jobTitle = jobTitle;
 	}
 
 }

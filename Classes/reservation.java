@@ -48,4 +48,16 @@ public class reservation {
 		throw new UnsupportedOperationException();
 	}
 
+	public customer getCust() {
+		return this.cust;
+	}
+
+	/**
+	 * 
+	 * @param cust
+	 */
+	public void setCust(customer cust) {
+		this.cust = cust;
+	}
+
 }

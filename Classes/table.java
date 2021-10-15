@@ -38,4 +38,28 @@ public class table {
 		throw new UnsupportedOperationException();
 	}
 
+	public boolean getIsReserved() {
+		return this.isReserved;
+	}
+
+	/**
+	 * 
+	 * @param isReserved
+	 */
+	public void setIsReserved(boolean isReserved) {
+		this.isReserved = isReserved;
+	}
+
+	public boolean getIsTaken() {
+		return this.isTaken;
+	}
+
+	/**
+	 * 
+	 * @param isTaken
+	 */
+	public void setIsTaken(boolean isTaken) {
+		this.isTaken = isTaken;
+	}
+
 }

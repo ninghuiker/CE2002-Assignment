@@ -1,6 +1,6 @@
 public class restaurant {
 
-	private order[][] order;
+	private order[] order;
 	private staff[] staffs;
 
 	public table[] getEmptyTable() {
