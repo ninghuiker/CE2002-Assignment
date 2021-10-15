@@ -2,11 +2,17 @@ public class customer extends person {
 
 	private boolean isMember;
 	private int contNum;
-	private boolean isActive;
+	//private boolean isActive;
+
+	public customer(string name, string gender, boolean isMember, int contNum)
+	{
+		super(name, gender);
+		this.isMember = isMember;
+		this.contNum = contNum;
+	}
 
 	public boolean getMember() {
-		// TODO - implement customer.getMember
-		throw new UnsupportedOperationException();
+		return isMember;
 	}
 
 	/**
@@ -14,8 +20,7 @@ public class customer extends person {
 	 * @param member
 	 */
 	public void setMember(boolean member) {
-		// TODO - implement customer.setMember
-		throw new UnsupportedOperationException();
+		this.isMember = member;
 	}
 
 	public int getContNum() {
@@ -30,16 +35,16 @@ public class customer extends person {
 		this.contNum = contNum;
 	}
 
-	public boolean getIsActive() {
+	/*public boolean getIsActive() {
 		return this.isActive;
-	}
+	}*/
 
 	/**
 	 * 
 	 * @param isActive
 	 */
-	public void setIsActive(boolean isActive) {
+	/*public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
-	}
+	}*/
 
 }
