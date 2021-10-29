@@ -22,16 +22,16 @@ public class Restaurant {
 			pax += 1;
 		}
 
-		for (i=0; i<table.length;i++){
-			if (table[i].availability() == true){
-				tempCapacity = table[i].getSeatingCapacity();
+		for (i=0; i<tables.length;i++){
+			if (tables[i].availability() == true){
+				tempCapacity = tables[i].getSeatingCapacity();
 				if (tempCapacity == pax){ //first instance of optimal table, end search
-					tableId = table[i].getTableId();
+					tableId = tables[i].getTableId();
 					return tableId;
 				}
 				else if (tempCapacity > pax && tempCapacity < tempSize){
 					tempSize = tempCapacity;
-					tableId = table[i].getTableId();
+					tableId = tables[i].getTableId();
 				}
 			}
 		}
@@ -65,13 +65,13 @@ public class Restaurant {
 	}
 
 	//Creating a reservation and selecting the appropriate table
-	public void setReservation(Date date, int pax, string custName, string contact) {
+	public void setReservation(Date date, int pax, String custName, String contact) {
 
 		int i;
 		int tableId;
 		Reservation reservation;
 
-		tableId = assignTable(pax, custName, true);
+		tableId = assignTable(pax, true);
 
 		if (tableId == -1){
 			System.out.println("Reservation failed, no table available.");
@@ -80,9 +80,9 @@ public class Restaurant {
 			for (i=0; i<tables.length;i++){
 				if (tables[i].getTableId() == tableId){
 					reservation = tables[i].getReservation();
-					reservation.setReserveTime(time);
+					reservation.setReserveTime(); //Should it be current time?
 					reservation.setPax(pax);
-					reservation.setCust(custName);
+					reservation.setCustName(custName);
 					break;
 				}
 			}
@@ -90,15 +90,14 @@ public class Restaurant {
 	}
 
 	//Creating an order without an existing table ie. Walk-in customers
-	public void setOrder(Date date, int pax, int staffId, string custName) {
+	public void setOrder(Date date, int pax, Staff staff, String custName) {
 
 		int i, j;
 		int tableId;
 		boolean isMember = false;
 		Order order;
-		Menu menu = new Menu();
 
-		tableId = assignTable(pax, custName, false);
+		tableId = assignTable(pax, false);
 
 		//if -1 is returned, no table assigned
 		if (tableId == -1){
@@ -106,19 +105,18 @@ public class Restaurant {
 		}
 		else {
 			for (i=0;i<customers.length;i++){ //check member array for membership status
-				if (customers[i].getName() == custName){
-					if (customers[i].getMember()==true){
+				if (customers[i] == custName){
 						isMember = true;
-					}
 				}
 			}
-			for (i=0; i<table.length;i++) {
+			for (i=0; i<tables.length;i++) {
 				if (tables[i].getTableId() == tableId) {
 					order = tables[i].getOrder();
-					order.setMember(isMember);
-					order.setTime(time);
-					order.setStaff(staffId);
-					menu.showItems();
+					order.setIsMember(isMember);
+					order.setDate(date);
+					order.addStaff(staff); 
+					ItemMenu.showItems();
+					PackageMenu.showPackage();
 					System.out.println("Enter the number of items you would like to order:");
 					Scanner sc = new Scanner(System.in);
 					int itemCount = sc.nextInt();
@@ -132,12 +130,12 @@ public class Restaurant {
 		}
 	}
 
-	public void removeReservation(string custName) {
+	public void removeReservation(String custName) {
 
 		int i;
 
 		for (i=0; i<tables.length; i++) {
-			if (tables[i].isReserved() == true) {
+			if (tables[i].getIsReserved() == true) {
 				if (tables[i].getReservation().getCust() == custName) {
 					tables[i].setIsReserved(false);
 				}
