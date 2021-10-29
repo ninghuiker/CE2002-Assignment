@@ -4,26 +4,31 @@ public class Table {
 
 	private int seatingCapacity;
 	private int capacity;
+	private int numOfTables;
 	private int tableId;
 	private boolean isReserved;
 	private boolean isTaken;
 	
 	private Reservation reservation;
 	private Order order;
-
-	public Table(index)
+	
+	public Table() 
 	{
 		// TODO - implement reservation.reservation
-		int size[] = [2, 4, 8];
+		this.numOfTables = 20;
+		int size[] = {2, 4, 8};
 
-		Order order = new Order();
-
-		int ranNum = ThreadLocalRandom.current().nextInt(0, 3);
-
-		this.tableId = i;
-		this.capacity = size[ranNum];
-		this.isReserved = false;
-		this.isTaken = false;
+		Order order = new Order(false, null);
+		
+		for (int i = 0; i < numOfTables; i++)
+		{
+			int ranNum = ThreadLocalRandom.current().nextInt(0, 3);
+			
+			this.tableId = i;
+			this.capacity = size[ranNum];
+			this.isReserved = false;
+			this.isTaken = false;
+		}
 	}
 	
 	public boolean availability() 

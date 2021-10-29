@@ -5,6 +5,7 @@ public class Restaurant {
 
 	private Table[] tables;
 	private String[] customers;
+	private int numOfTables = 10;
 
 	//Finds most suitable table for customer
 	public int getEmptyTable(int pax) {
@@ -136,7 +137,7 @@ public class Restaurant {
 
 		for (i=0; i<tables.length; i++) {
 			if (tables[i].getIsReserved() == true) {
-				if (tables[i].getReservation().getCust() == custName) {
+				if (tables[i].getReservation().getCustName() == custName) {
 					tables[i].setIsReserved(false);
 				}
 			}
@@ -147,10 +148,9 @@ public class Restaurant {
 		// TODO - implement restaurant.addOrder
 		int i;
 		boolean isMember = false;
-		Menu menu = new Menu();
 		String custName;
 
-		for (i=0; i<table.length;i++){
+		for (i=0; i<tables.length;i++){
 			if (tables[i].getTableId() == tableId){
 				if (tables[i].getIsReserved() == false){ //if table not reserved, wrong input
 					System.out.println("Invalid Table");
@@ -159,18 +159,19 @@ public class Restaurant {
 				else {
 					custName = tables[i].getReservation().getCustName();
 					for (i=0;i<customers.length;i++){ //check member array for membership status
-						if (customers[i].getName() == custName){
-							if (customers[i].getMember()==true){
+						if (customers[i] == custName){
+							
 								isMember = true;
-							}
+							
 						}
 					}
 					tables[i].setIsReserved(false); //remove reservation
 					tables[i].setIsTaken(true); //add order
-					order = tables[i].getOrder();
-					order.setTime(time);
-					order.setStaff(staffId);
-					menu.showItems();
+					Order order = tables[i].getOrder();
+					//order.setTime();
+					//order.addStaff(staffId);
+					PackageMenu.showPackage();
+					ItemMenu.showItems();
 					System.out.println("Enter the number of items you would like to order:");
 					Scanner sc = new Scanner(System.in);
 					int itemCount = sc.nextInt();
@@ -184,19 +185,19 @@ public class Restaurant {
 		}
 	}
 
-	public void addCustomer(custName){
+	public void addCustomer(String custName){
 		int i;
 		int insertion = 0;
 		for (i=0; i<customers.length; i++){
 			if (customers[i] == null){
 				customers[i] = custName;
 				insertion = 1;
-				System.out.prinln("New member added!");
+				System.out.println("New member added!");
 				break;
 			}
 		}
 		if (insertion == 0){
-			System.out.println("Member List Full, failed to add customer.")
+			System.out.println("Member List Full, failed to add customer.");
 		}
 	}
 
@@ -205,13 +206,17 @@ public class Restaurant {
 		throw new UnsupportedOperationException();
 	}
 
-	public Restaurant(custArray)
+	public Restaurant(String[] custArray)
 	{
 		int i;
 		tables = new Table[20];
-		for (int i = 0; i < numOfTables; i++){
-			tables[i] = new Table(i);
+		for (i = 0; i < numOfTables; i++){
+			tables[i] = new Table();
 		}
 		customers = new String[50];
+		for (i=0; i<numOfTables;i++)
+		{
+			customers[i] = custArray[i];
+		}
 	}
 }

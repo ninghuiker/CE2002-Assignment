@@ -83,9 +83,9 @@ public class Reservation {
 		return this.custName;
 	}
 
-	public void setCustName(Customer cust) 
+	public void setCustName(String cust) 
 	{
-		this.custName = cust.getName();
+		this.custName = cust;
 	}
 
 }

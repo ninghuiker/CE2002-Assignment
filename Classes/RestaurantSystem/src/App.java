@@ -7,7 +7,10 @@ public class App {
 
         /*----------------------------- Getting info from Staff--------------------------------*/
 
-        Restaurant restaurant = new Restaurant();
+
+        String[] names = {"John", "Chiam Chueng", "Johnathan", "Jess", "Bobo"};
+
+        Restaurant restaurant = new Restaurant(names);
 
 
         System.out.println("Welcome to Restaurant Reservation and Point of Sale System (RRPSS)");
@@ -56,7 +59,7 @@ public class App {
 
             switch(choice){
                 case 1:
-                    //ItemMenu.menu_interface();
+                    Menu.menu_interface();
                     break;
 
                 case 2:

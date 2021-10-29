@@ -1,11 +1,6 @@
 import java.util.*;
 public class Order {
 
-	public Order(boolean isMember, Staff staff) {
-		this.isMember = isMember;
-		this.staff = staff;
-	}
-
 	private final int maxItemNum = 50;
 	private final int maxPacNum = 50;
 
@@ -17,6 +12,20 @@ public class Order {
 	private Date date;
 	private int itemcnt = 0;	// point to the first empty slot in item list
 	private int paccnt = 0;		// point to the first package slot in package list
+	
+	public Order()
+	{
+		
+	}
+
+	public Order(boolean isMember, Staff staff) {
+		this.isMember = isMember;
+		this.staff = staff;
+	}
+
+	public void addStaff(Staff staff) {
+		this.staff = staff;
+	}
 
 	public void addItem() {
 		orderItems[itemcnt++] = ItemMenu.getItem();
@@ -118,4 +127,5 @@ public class Order {
 	}
 
 }
+
 
