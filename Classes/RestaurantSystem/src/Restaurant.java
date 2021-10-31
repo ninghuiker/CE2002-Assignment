@@ -3,17 +3,20 @@ import java.util.*;
 
 public class Restaurant {
 
-	private Table[] tables;
+	
 	private String[] customers;
 	private int numOfTables = 10;
+	private Table[] tables = new Table[numOfTables];
 
 	//Finds most suitable table for customer
 	public int getEmptyTable(int pax) {
 
-		int i;
+		int i = 0;
 		int tableId = -1; //store return value
 		int tempSize = pax-1; //to store most optimal size table available
 		int tempCapacity = 10000; //to store table[i].getSeatingCapacity() for better readability
+
+		//System.out.println(tables[i].availability());
 
 		//if no. of guest 0, no table offered
 		if (pax == 0){
@@ -23,8 +26,8 @@ public class Restaurant {
 			pax += 1;
 		}
 
-		for (i=0; i<tables.length;i++){
-			if (tables[i].availability() == true){
+		for (i=0; i<numOfTables;i++){
+			if (this.tables[i].availability()){
 				tempCapacity = tables[i].getSeatingCapacity();
 				if (tempCapacity == pax){ //first instance of optimal table, end search
 					tableId = tables[i].getTableId();
@@ -36,7 +39,7 @@ public class Restaurant {
 				}
 			}
 		}
-
+		System.out.println(tableId);
 		return tableId;
 	}
 
@@ -48,11 +51,14 @@ public class Restaurant {
 
 		tableId = getEmptyTable(pax);
 
+		System.out.println(tableId);
+
 		if (tableId != -1){
-			for (i=0; i<tables.length;i++){
+			for (i=0; i<numOfTables;i++){
 				if (tables[i].getTableId() == tableId){
 					if (isReservation){
 						tables[i].setIsReserved(true);
+						tables[i].setIsTaken(true);
 					}
 					else{
 						tables[i].setIsTaken(true);
@@ -96,10 +102,10 @@ public class Restaurant {
 		int i, j;
 		int tableId;
 		boolean isMember = false;
-		Order order;
+		
 
 		tableId = assignTable(pax, false);
-
+		Order order = tables[tableId].getOrder();
 		//if -1 is returned, no table assigned
 		if (tableId == -1){
 			System.out.println("Order failed, no table available.");
@@ -208,15 +214,20 @@ public class Restaurant {
 
 	public Restaurant(String[] custArray)
 	{
-		int i;
-		tables = new Table[20];
-		for (i = 0; i < numOfTables; i++){
-			tables[i] = new Table();
+		int i;int j;
+		for (i = 0; i < numOfTables/2; i++){
+			this.tables[i] = new Table(i, 2);
+		}
+		
+		for ( j=i ; j<numOfTables;j++)
+		{
+			this.tables[j] = new Table(j, 4);
 		}
 		customers = new String[50];
-		for (i=0; i<numOfTables;i++)
+		for (i=0; i<custArray.length;i++)
 		{
 			customers[i] = custArray[i];
 		}
+
 	}
 }

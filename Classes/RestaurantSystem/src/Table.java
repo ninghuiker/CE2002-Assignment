@@ -12,23 +12,16 @@ public class Table {
 	private Reservation reservation;
 	private Order order;
 	
-	public Table() 
+	public Table(int tableId, int size) 
 	{
 		// TODO - implement reservation.reservation
 		this.numOfTables = 20;
-		int size[] = {2, 4, 8};
-
-		Order order = new Order(false, null);
+		this.order = new Order(false, null);
+		this.tableId = tableId;
+		this.seatingCapacity = size;
+		this.isReserved = false;
+		this.isTaken = false;
 		
-		for (int i = 0; i < numOfTables; i++)
-		{
-			int ranNum = ThreadLocalRandom.current().nextInt(0, 3);
-			
-			this.tableId = i;
-			this.capacity = size[ranNum];
-			this.isReserved = false;
-			this.isTaken = false;
-		}
 	}
 	
 	public boolean availability() 

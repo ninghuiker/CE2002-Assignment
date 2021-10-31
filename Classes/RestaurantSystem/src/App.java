@@ -1,7 +1,9 @@
+import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     {
         Scanner sc = new Scanner(System.in);
 
@@ -14,7 +16,7 @@ public class App {
 
 
         System.out.println("Welcome to Restaurant Reservation and Point of Sale System (RRPSS)");
-        System.out.println("Please input your staff ID: ");
+        /*System.out.println("Please input your staff ID: ");
 
         int staff_ID = sc.nextInt();
 
@@ -31,7 +33,8 @@ public class App {
 
         String jobtitle =sc.next();
         
-        Staff staff = new Staff(name, gender, staff_ID, jobtitle);
+        Staff staff = new Staff(name, gender, staff_ID, jobtitle);*/
+        Staff staff = new Staff ("Ian", "Male", 123, "Manager");
 
         //Add Staff to Restaurant
 
@@ -59,11 +62,17 @@ public class App {
 
             switch(choice){
                 case 1:
-                    Menu.menu_interface();
+                    MenuManager.mainMenu();
                     break;
 
-                case 2:
-                    //Create order
+                case 2:         //Set Order
+                    System.out.println("Input how many people: ");
+                    int pax = sc.nextInt();
+                    Date date = new java.util.Date();
+                    System.out.println("Input the Customer's name: ");
+                    String custName = sc.next();
+
+                    restaurant.setOrder(date, pax, staff, custName);
                     break;
 
                 case 3:
