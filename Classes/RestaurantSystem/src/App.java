@@ -61,6 +61,12 @@ public class App {
 
                 case 2:
                     //Create order
+                    /* code added to test store order function in order.txt */
+                    // Order od = new Order(true, staff);
+                    // OrderManager trial = new OrderManager(od);
+
+                    // String[] arguments = new String[] {"123"};
+                    // OrderManager.main(arguments);
                     break;
 
                 case 3:

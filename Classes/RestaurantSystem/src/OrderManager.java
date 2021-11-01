@@ -12,5 +12,8 @@ public class OrderManager {
         System.out.println();
         System.out.println("Please Enter your choice:");
         int choice = sc.nextInt();
+        /* added by Anusha to test order.txt */
+        //order.addItem();
+        //order.storeOrder();
     }
 }

@@ -1,4 +1,8 @@
 import java.util.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Order {
 
 	public Order(boolean isMember, Staff staff) {
@@ -115,6 +119,21 @@ public class Order {
 	private void clean() {
 		itemcnt = 0;
 		paccnt = 0;
+	}
+
+	public void storeOrder() throws IOException  {
+		FileWriter writer = new FileWriter("Order.txt");
+		writer.write("Order Items\n");
+		for (int i = 0; i < itemcnt; ++i)
+			writer.write(orderItems[i].getName() + "\n" + orderItems[i].getPrice()
+					+ "\n" + orderItems[i].getDescription() + "\n");
+
+		writer.write("Order Packages\n");
+		for (int i = 0; i < paccnt; ++i)
+			writer.write(orderPackage[i].getDescription() + "\n" + orderPackage[i].getPrice()
+					+ "\n");
+
+		writer.close();
 	}
 
 }
